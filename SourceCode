@@ -1,0 +1,987 @@
+
+package sample;
+
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javax.sound.sampled.*;
+import java.io.*;
+
+class Genre extends MusicBAY {
+    public void start(Stage stage) throws Exception {
+
+        Image img = new Image(new FileInputStream("resources\\images\\genres.png"));
+        ImageView genrePage = new ImageView(img);
+        genrePage.setX(0);
+        genrePage.setY(0);
+        genrePage.setFitHeight(500);
+        genrePage.setFitWidth(700);
+
+        Button trending = new Button();
+        trending.setLayoutX(40);
+        trending.setLayoutY(55);
+        trending.setMinSize(200, 200);
+        trending.setStyle("-fx-background-color: transparent ");
+
+        Button party = new Button();
+        party.setLayoutX(250);
+        party.setLayoutY(55);
+        party.setMinSize(200, 200);
+        party.setStyle("-fx-background-color: transparent ");
+
+        Button romance = new Button();
+        romance.setLayoutX(460);
+        romance.setLayoutY(55);
+        romance.setMinSize(200, 200);
+        romance.setStyle("-fx-background-color: transparent ");
+
+        Button chillax = new Button();
+        chillax.setLayoutX(40);
+        chillax.setLayoutY(275);
+        chillax.setMinSize(200, 170);
+        chillax.setStyle("-fx-background-color: transparent ");
+
+        Button beach = new Button();
+        beach.setLayoutX(250);
+        beach.setLayoutY(275);
+        beach.setMinSize(200, 170);
+        beach.setStyle("-fx-background-color: transparent ");
+
+        Button workout = new Button();
+        workout.setLayoutX(460);
+        workout.setLayoutY(275);
+        workout.setMinSize(200, 170);
+        workout.setStyle("-fx-background-color: transparent ");
+
+        Button back = new Button();
+        back.setLayoutX(0);
+        back.setLayoutY(460);
+        back.setMinSize(100, 30);
+        back.setStyle("-fx-background-color: transparent ");
+
+        Button artist = new Button();
+        artist.setLayoutX(500);
+        artist.setLayoutY(460);
+        artist.setMinSize(200, 30);
+        artist.setStyle("-fx-background-color: transparent ");
+
+        EventHandler<MouseEvent> handle = new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource() == trending) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\trending.png"));
+                        myPage m = new myPage(img,"Trending",1);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == party) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\party.png"));
+                        myPage m = new myPage(img,"Party",2);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == romance) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\romance.png"));
+                        myPage m = new myPage(img,"Romance",3);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == chillax) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\chillax.png"));
+                        myPage m = new myPage(img,"Chillax",4);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == beach) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\beach.png"));
+                        myPage m = new myPage(img,"Beach Vibes",5);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == workout) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\workout.png"));
+                        myPage m = new myPage(img,"Workout",6);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == back) {
+                    try {
+                        new MusicBAY().start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == artist) {
+                    try {
+                        new Artist().start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        trending.setOnMouseClicked(handle);
+        party.setOnMouseClicked(handle);
+        romance.setOnMouseClicked(handle);
+        chillax.setOnMouseClicked(handle);
+        workout.setOnMouseClicked(handle);
+        beach.setOnMouseClicked(handle);
+        back.setOnMouseClicked(handle);
+        artist.setOnMouseClicked(handle);
+
+
+        Group root = new Group(genrePage,trending,chillax,romance,party,workout,beach,back,artist);
+        Scene scene2 = new Scene(root,700,500);
+        stage.setTitle("GENRES");
+        scene2.setFill(Color.BLACK);
+        stage.setScene(scene2);
+        stage.show();
+    }
+}
+
+class Artist extends MusicBAY {
+
+    public void start(Stage stage) throws Exception {
+
+        Image img = new Image(new FileInputStream("resources\\images\\artists.png"));
+        ImageView artists = new ImageView(img);
+        artists.setX(0);
+        artists.setY(0);
+        artists.setFitHeight(500);
+        artists.setFitWidth(700);
+
+        Button ritviz = new Button();
+        ritviz.setLayoutX(40); ritviz.setLayoutY(55);
+        ritviz.setMinSize(200,200);
+        ritviz.setStyle("-fx-background-color: transparent ");
+
+        Button arijit = new Button();
+        arijit.setLayoutX(250); arijit.setLayoutY(55);
+        arijit.setMinSize(200,200);
+        arijit.setStyle("-fx-background-color: transparent ");
+
+        Button shankar = new Button();
+        shankar.setLayoutX(460); shankar.setLayoutY(55);
+        shankar.setMinSize(200,200);
+        shankar.setStyle("-fx-background-color: transparent");
+
+        Button twostates = new Button();
+        twostates.setLayoutX(40);twostates.setLayoutY(275);
+        twostates.setMinSize(200,170);
+        twostates.setStyle("-fx-background-color: transparent");
+
+        Button adhm = new Button();
+        adhm.setLayoutX(250); adhm.setLayoutY(275);
+        adhm.setMinSize(200,170);
+        adhm.setStyle("-fx-background-color: transparent ");
+
+        Button bandits = new Button();
+        bandits.setLayoutX(460); bandits.setLayoutY(275);
+        bandits.setMinSize(200,170);
+        bandits.setStyle("-fx-background-color: transparent ");
+
+        Button back = new Button();
+        back.setLayoutX(0); back.setLayoutY(460);
+        back.setMinSize(100,30);
+        back.setStyle("-fx-background-color: transparent ");
+
+        
+        EventHandler<MouseEvent> handle = new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource() == ritviz) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\ritviz.png"));
+                        myPage m = new myPage(img,"Ritviz",7);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == arijit) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\arijit.png"));
+                        myPage m = new myPage(img,"Arijit Singh",8);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == shankar) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\shankar.png"));
+                        myPage m = new myPage(img,"Shankar Mahadevan",9);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == twostates) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\twoStates.png"));
+                        myPage m = new myPage(img,"Two States",10);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == adhm) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\adhm.png"));
+                        myPage m = new myPage(img,"Ae Dil Hai Mushkil",11);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == bandits) {
+                    try {
+                        Image img = new Image(new FileInputStream("resources\\images\\bandits.png"));
+                        myPage m = new myPage(img,"Bandish Bandits",12);
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == back) {
+                    try {
+                        new Genre().start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        };
+        ritviz.setOnMouseClicked(handle);
+        arijit.setOnMouseClicked(handle);
+        shankar.setOnMouseClicked(handle);
+        twostates.setOnMouseClicked(handle);
+        bandits.setOnMouseClicked(handle);
+        adhm.setOnMouseClicked(handle);
+        back.setOnMouseClicked(handle);
+        Group root = new Group(artists,ritviz,twostates,shankar,arijit,bandits,adhm,back);
+        Scene scene2 = new Scene(root,700,500);
+        stage.setTitle("ARTISTS");
+        scene2.setFill(Color.BLACK);
+        stage.setScene(scene2);
+        stage.show();
+    }
+}
+
+public class MusicBAY extends Application {
+Clip clip;
+    @Override
+    public void start(Stage stage) throws Exception{
+        Image img = new Image(new FileInputStream("resources\\images\\front.png"));
+        ImageView logo = new ImageView(img);
+        logo.setX(0);
+        logo.setY(0);
+        logo.setFitHeight(500);
+        logo.setFitWidth(700);
+        Button insta = new Button();
+        insta.setLayoutX(10);
+        insta.setLayoutY(440);
+        insta.setMinSize(100,50);
+        Button info = new Button();
+        info.setLayoutX(590);
+        info.setLayoutY(440);
+        info.setMinSize(100,50);
+        Button enter = new Button();
+        enter.setLayoutX(260); enter.setLayoutY(350);
+        enter.setMinSize(200,20);
+        enter.setStyle("-fx-background-color: Transparent ");
+        insta.setStyle("-fx-background-color: Transparent ");
+        info.setStyle("-fx-background-color: Transparent ");
+
+        EventHandler<MouseEvent> handler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource()==enter) {
+                    Genre m = new Genre();
+                    try {
+                        clip.stop();
+                        m.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(event.getSource()==info)
+                {
+                    try {
+                        new ShowInfo().start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(event.getSource()==insta){
+                    clip.stop();
+                    getHostServices().showDocument("https://www.instagram.com/musicbay_dmce/");
+                event.consume();
+            }}
+        };
+        enter.setOnMouseClicked(handler);
+        insta.setOnMouseClicked(handler);
+        info.setOnMouseClicked(handler);
+        Group root = new Group(logo,enter,insta,info);
+        Scene scene = new Scene(root,700,503);
+        stage.setTitle("MUSIC BAY - Unleash the Music");
+        scene.setFill(Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        stage.getIcons().add(new Image("file:resources\\images\\favicon.png"));
+        AudioInputStream audioInputStream;
+        String filepath = "resources\\songs\\bgmusicwav.wav";
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(filepath).getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+                clip.start();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+class ShowInfo extends MusicBAY{
+    @Override
+    public void start(Stage stage2) throws Exception {
+        stage2 = new Stage();
+        Image img = new Image(new FileInputStream("resources\\images\\info.png"));
+        ImageView logo = new ImageView(img);
+        logo.setFitHeight(295);
+        logo.setFitWidth(300);
+        Group root = new Group(logo);
+        Scene scene = new Scene(root,300,293);
+        stage2.getIcons().add(new Image("file:resources\\images\\favicon.png"));
+        stage2.setTitle("Creators Info");
+        stage2.setResizable(false);
+        stage2.setScene(scene);
+        stage2.show();
+    }
+}
+
+package sample;
+
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+class myPage extends MusicBAY {
+
+    String title; Image img; int x;
+    myPage(Image setImg , String setPage, int pageNo){
+        img = setImg;
+        title = setPage;
+        x = pageNo;
+    }
+    public void start(Stage stage){
+        ImageView genrePage = new ImageView(img);
+        genrePage.setX(0);
+        genrePage.setY(0);
+        genrePage.setFitHeight(500);
+        genrePage.setFitWidth(700);
+
+        Button song1 = new Button();
+        song1.setLayoutX(50);
+        song1.setLayoutY(140);
+        song1.setMinSize(550,35);
+        song1.setStyle("-fx-background-color: transparent");
+
+        Button song2 = new Button();
+        song2.setLayoutX(50);
+        song2.setLayoutY(190);
+        song2.setMinSize(550,35);
+        song2.setStyle("-fx-background-color: transparent");
+
+        Button song3 = new Button();
+        song3.setLayoutX(50);
+        song3.setLayoutY(250);
+        song3.setMinSize(550,35);
+        song3.setStyle("-fx-background-color: transparent");
+
+        Button song4 = new Button();
+        song4.setLayoutX(50);
+        song4.setLayoutY(310);
+        song4.setMinSize(550,35);
+        song4.setStyle("-fx-background-color: transparent");
+
+        Button song5 = new Button();
+        song5.setLayoutX(50);
+        song5.setLayoutY(370);
+        song5.setMinSize(550,35);
+        song5.setStyle("-fx-background-color: transparent");
+
+        Button back = new Button();
+        back.setLayoutX(0); back.setLayoutY(460);
+        back.setMinSize(100,30);
+        back.setStyle("-fx-background-color: transparent ");
+
+        EventHandler<MouseEvent> handle = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource() ==song1) {
+                    new MusicPlayer(0,0,0,0);
+                    try {
+                        new MusicPlayer(0,0,0,x).start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == song2) {
+                    try {
+                        new MusicPlayer(1, 1, 1,x).start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == song3) {
+                    try {
+                        new MusicPlayer(2, 2,2,x).start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == song4) {
+                    try {
+                        new MusicPlayer(3, 3,3,x).start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == song5) {
+                    try {
+                        new MusicPlayer(4, 4,4,x).start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == back) {
+                    try {
+                        if(x>6){
+                            new Artist().start(stage);}
+                        else {
+                            new Genre().start(stage);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        song1.setOnMouseClicked(handle);
+        song2.setOnMouseClicked(handle);
+        song3.setOnMouseClicked(handle);
+        song4.setOnMouseClicked(handle);
+        song5.setOnMouseClicked(handle);
+        back.setOnMouseClicked(handle);
+        Group root = new Group(genrePage,song1,song2,song3,song4,song5,back);
+        Scene scene2 = new Scene(root, 700, 500);
+        stage.setTitle(title);
+        scene2.setFill(Color.BLACK);
+        stage.setScene(scene2);
+        stage.show();
+    }
+}
+
+package sample;
+
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.effect.Reflection;
+import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javax.sound.sampled.*;
+import java.io.*;
+
+
+
+class MusicPlayer extends Application {
+int fp,img, name ,page,counter;
+
+    MusicPlayer(int setfp, int setimg, int setName,int setPage){
+    fp = setfp;
+    img = setimg;
+    name = setName;
+    page = setPage;
+    }
+
+    private Stage stage1;
+    private Stage container = stage1;
+    private Clip clip;
+    private Pane musicPane = new Pane();
+    private Reflection ref = new Reflection();
+    private Button play = new Button("||");
+    private Button forward = new Button(">>");
+    private Button rewind = new Button("<<");
+    private Slider slider = new Slider();
+    private Label start = new Label("0.00");
+    private Label end = new Label("10.0");
+    private Label artistName;
+    private Button back = new Button("<");
+    private Button colon = new Button(":");
+
+    public void start(Stage s) throws Exception {
+        String [] filepaths = new String[5];
+        String[] names =new String[5];
+        Image songLogo = null, songlogo2=null, songlogo3=null, songlogo4=null, songlogo5=null;
+        ImageView logo;
+        Image[] imagescontainer = new Image[5];
+        Image img2 = new Image(new FileInputStream("resources\\images\\front 1.jpg"));
+        ImageView logo2 = new ImageView(img2);
+        logo2.setX(0);
+        logo2.setY(0);
+        logo2.setFitHeight(400);
+        logo2.setFitWidth(400);
+
+
+        if(page==1){
+            filepaths = new String[]{"resources\\songs\\breathless.wav",
+                    "resources\\songs\\udd.wav",
+                    "resources\\songs\\dheeme.wav",
+                    "resources\\songs\\mast.wav",
+                    "resources\\songs\\ambarsariya.wav"};
+            names = new String[]{"Breathless | S Mahadevan ", "Udd Gaye | Ritviz", "Dheeme Dheeme | Tony Kakkar", "Mast Magan | 2 States", "Ambarsariya | Fukrey"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\breathless.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\udd.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\dheeme.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\ambar.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==2){
+            filepaths = new String[]{"resources\\songs\\breakup.wav",
+                    "resources\\songs\\iski.wav",
+                    "resources\\songs\\naari.wav",
+                    "resources\\songs\\saki.wav",
+                    "resources\\songs\\kam.wav"};
+            names = new String[]{"Breakup Song | Ae Dil hai Mushkil","Iski Uski | 2 States", "Naari Naari | Made in China", "O Saki Saki | Batla House", "Ek To Kam Zindagani"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\naari.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\saki.jpg"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\kam.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==3){
+            filepaths = new String[]{"resources\\songs\\sajan.wav",
+                    "resources\\songs\\yaad.wav",
+                    "resources\\songs\\ched.wav",
+                    "resources\\songs\\channa.wav",
+                    "resources\\songs\\mast.wav"};
+            names = new String[]{"Sajan Bin | Bandish Bandits", "Yaad Piya Ki Aane Lagi", "Chedkhaaniyaa | Bandish Bandits", "Channa Mereya", "Man Mast Magan"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\yaad.jpeg"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\two.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==4){
+            filepaths = new String[]{"resources\\songs\\sage.wav",
+                    "resources\\songs\\adhm.wav",
+                    "resources\\songs\\locha.wav",
+                    "resources\\songs\\ambarsariya.wav",
+                    "resources\\songs\\chalo.wav"};
+            names = new String[]{"Sage | Ritviz", "Ae Dil Hai Mushkil", "Locha-E-Ulfat | 2 States", "Ambarsariya | Fukrey","Chalo Chalein | Ritviz"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\sage.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\ambar.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\chalo.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==5){
+            filepaths = new String[]{"resources\\songs\\dheeme.wav",
+                    "resources\\songs\\goa.wav",
+                    "resources\\songs\\udd.wav",
+                    "resources\\songs\\cutiepie.wav",
+                    "resources\\songs\\liggi.wav"};
+            names = new String[]{ "Dheeme Dheeme","Goa Beach","Udd Gaye | Ritviz",  "Cutiepie | Ae Dil Hai Mushkil","Liggi | Ritviz "};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\dheeme.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\goa.jpg"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\udd.png"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\liggi.jpg"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==6){
+            filepaths = new String[]{"resources\\songs\\bhaag.wav",
+                    "resources\\songs\\sultan.wav",
+                    "resources\\songs\\dangal.wav",
+                    "resources\\songs\\biba.wav",
+                    "resources\\songs\\nashe.wav"};
+            names = new String[]{"Bhaag Milkha Bhaag","Sultan","Dangal Dangal","Biba | Marshmallow","Nashe Si Chad Gayi | Befikre"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\bhaag.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\sultan.jpg"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\dangal.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\biba.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\nashe.jpg"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==7){
+             filepaths = new String[]{"resources\\songs\\liggi.wav",
+                     "resources\\songs\\udd.wav",
+                     "resources\\songs\\raahi.wav",
+                     "resources\\songs\\chalo.wav",
+                     "resources\\songs\\sage.wav"};
+            names = new String[]{"Liggi | Ritviz", "Udd Gaye | Ritviz", "Raahi | Ritviz", "Chalo Chalein | Ritviz", "Sage | Ritviz"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\liggi.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\udd.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\raahi.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\chalo.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\sage.jpg"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==8){
+            filepaths = new String[]{"resources\\songs\\tum.wav",
+                    "resources\\songs\\maahi.wav",
+                    "resources\\songs\\pal.wav",
+                    "resources\\songs\\tujhe.wav",
+                    "resources\\songs\\khairiyat.wav"};
+            names = new String[]{"Tum Hi Ho | Aashiqui 2", "Ve Maahi | Kesari", "Pal Pal Dil Ke Paas", "Tujhe Kitna Chahane Lage", "Khairiyat | Chhichore"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\tum.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\maahi.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\pal.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\tujhe.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\khairiyat.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==9){
+            filepaths = new String[]{"C:\\Users\\acer\\IdeaProjects\\MUSIC BAY\\resources\\songs\\breathless.wav",
+                    "resources\\songs\\kajra.wav",
+                    "resources\\songs\\sur.wav",
+                    "resources\\songs\\desi.wav",
+                    "resources\\songs\\gallan.wav"};
+            names = new String[]{"Breathless", "Kajra Re", "Sur Niragas Ho", "Desi Girl | Dostana", "Gallan Goodiyaan | Dil Dhadakne Do"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\breathless.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\kajra.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\sur.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\desi.jpg"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\gallan.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==10){
+            filepaths = new String[]{"resources\\songs\\locha.wav",
+                    "resources\\songs\\mast.wav",
+                    "resources\\songs\\offo.wav",
+                    "resources\\songs\\iski.wav",
+                    "resources\\songs\\chaandaniya.wav"};
+            names = new String[]{"Locha-E-Ulfat", "Mast Magan", "Offo", "Iski Uski", "Chaandaniya"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\two.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\two.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==11){
+            filepaths = new String[]{"resources\\songs\\adhm.wav",
+                    "resources\\songs\\channa.wav",
+                    "resources\\songs\\bulleya.wav",
+                    "resources\\songs\\breakup.wav",
+                    "resources\\songs\\cutiepie.wav"};
+            names = new String[]{"Ae Dil Hai Mushkil","Channa Mereya","Bulleya","Breakup Song","Cutiepie"};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\adhm2.png"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+        if(page==12){
+            filepaths = new String[]{"resources\\songs\\sajan.wav",
+                    "resources\\songs\\ched.wav",
+                    "resources\\songs\\padharo.wav",
+                    "resources\\songs\\garaj.wav",
+                    "resources\\songs\\couple.wav"};
+            names = new String[]{"Sajan Bin | Bandish Bandits","Chedkhaniyaan | Bandish Bandits","Padharo Mhare Des | Bandish Bandits","Garaj Garaj | Bandish Bandits","Couple Goals | Bandish Bandits",};
+            artistName = new Label(names[name]);
+            try {
+                songLogo = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo2 = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo3 = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo4 = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+                songlogo5 = new Image(new FileInputStream("resources\\images\\bandits.jpg"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }imagescontainer = new Image[]{songLogo, songlogo2, songlogo3, songlogo4, songlogo5};
+        }
+
+
+
+        musicPane.prefHeight(400);
+        musicPane.prefWidth(400);
+        musicPane.maxHeight(400);
+        musicPane.maxWidth(400);
+        musicPane.setStyle("-fx-background-color: black;");
+        play.setLayoutX(185);
+        play.setLayoutY(307);
+        play.setStyle("-fx-background-color: #f12929; -fx-background-radius: 1000;");
+        play.setTextFill(Color.WHITE);
+        play.setFont(Font.font("Fira Code", 14));
+        Group newroot;
+        Scene scene;
+        forward.setLayoutX(219);
+        forward.setLayoutY(307);
+        forward.setStyle("-fx-background-color: Black; -fx-background-radius: 1000;");
+        forward.setTextFill(Color.WHITE);
+        forward.setFont(Font.font("Fira Code", 14));
+        rewind.setLayoutX(136);
+        rewind.setLayoutY(307);
+        rewind.setStyle("-fx-background-color: Black; -fx-background-radius: 1000;");
+        rewind.setTextFill(Color.WHITE);
+        rewind.setFont(Font.font("Fira Code", 14));
+
+
+        start.setLayoutX(30);
+        start.setLayoutY(302);
+        start.setTextFill(Color.LIGHTYELLOW);
+        start.setFont(Font.font("Fira Code", 11));
+        end.setLayoutX(349);
+        end.setLayoutY(294);
+        end.setTextFill(Color.LIGHTYELLOW);
+        end.setFont(Font.font("Fira Code", 11));
+        artistName = new Label(names[name]);
+        artistName.setLayoutX(32);
+        artistName.setLayoutY(277);
+        artistName.prefHeight(21);
+        artistName.prefWidth(123);
+        artistName.setTextFill(Color.WHITE);
+        artistName.setFont(Font.font("Tw Cen MT", 18));
+        back.setLayoutX(6);
+        back.setLayoutY(14);
+        back.setStyle("-fx-background-color: Transparent;");
+        back.setTextFill(Color.RED);
+        back.setFont(Font.font("Fira Code", 20));
+        colon.setLayoutX(359);
+        colon.setLayoutY(14);
+        colon.setStyle("-fx-background-color: Transparent;");
+        colon.setTextFill(Color.RED);
+        colon.setFont(Font.font("Fira Code", 20));
+        logo = new ImageView(imagescontainer[img]);
+        logo.setLayoutX(110);
+        logo.setLayoutY(61);
+        logo.setFitWidth(189);
+        logo.setFitHeight(183);
+        ref.setFraction(0.45);
+        ref.setTopOffset(1);
+        ref.setTopOpacity(0.2);
+        logo.setPreserveRatio(true);
+        logo.setEffect(ref);
+        newroot = new Group(logo2,musicPane, logo, play, forward, rewind, artistName, back, colon);
+        scene = new Scene(newroot, 400, 400);
+        scene.setFill(Color.BLACK);
+        stage1 = new Stage();
+        stage1.setScene(scene);
+        stage1.show();
+        stage1.setTitle("MUSIC BAY - Unleash the Music");
+        stage1.getIcons().add(new Image("file:resources\\images\\favicon.png"));
+        stage1.setResizable(false);
+        Stage finalStage = stage1;
+        AudioInputStream audioInputStream;
+        for(int i=1;i<2;i++) {
+            String filepath = filepaths[fp];
+            try {
+                audioInputStream = AudioSystem.getAudioInputStream(new File(filepath).getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        EventHandler<MouseEvent> handle = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource() == play) {
+                    if (play.getText() == "||") {
+                        play.setText("|>");
+                        clip.stop();
+                    } else if (play.getText() == "|>") {
+                        play.setText("||");
+                        clip.start();
+                    }
+                }
+                if (event.getSource() == forward) {
+                    try {
+                        if (fp == 4) {
+                            stage1.close();
+                            clip.close();
+                        } else {
+                            fp++;
+                            img++;
+                            name++;
+                            stage1.close();
+                            clip.close();
+                            start(stage1);
+                        }
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == rewind) {
+                    try {
+                        if (fp == 0) {
+                            stage1.close();
+                            clip.close();
+                        } else {
+                            img--;
+                            fp--;
+                            name--;
+                            if (clip != null) {
+                                clip.close();
+                            }
+                            stage1.close();
+                            start(stage1);
+                        }
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (event.getSource() == back) {
+                    clip.close();
+                    stage1.close();
+                }
+            }
+        };
+        play.setOnMouseClicked(handle);
+        forward.setOnMouseClicked(handle);
+        rewind.setOnMouseClicked(handle);
+        back.setOnMouseClicked(handle);
+        EventHandler<WindowEvent> handler = new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                windowEvent.consume();
+                if(windowEvent.isConsumed()) clip.stop();
+                finalStage.close();
+            }
+        };
+
+        stage1.setOnCloseRequest(handler);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
